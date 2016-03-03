@@ -7,15 +7,15 @@
 
 /***
 	验证码倒计时(刷新页面是否同时刷新计时器,计时变量由localStorage来实现)
-	@ validConf    : 	 obj 			验证规则,有required与reg,必填项和正则匹配项
-	@ touch			   : 	 boolean 	是否使用触摸事件
-	@ loadingTxt   :   string 		提交时提交按钮显示的文本
-	@ validSuccess : 	 function[json] 	
-										 表单验证通过后执行的回调函数,一般在这里调用ajax,
-									 	 函数的参数为表单序列化后的json格式,
-									   函数中的this指向input[submit]提交按钮
-  @ alertFn      : 	 function[str]
-  									 弹窗提示函数,默认使用window的alert弹窗,也可以传入自己的弹窗函数
+  @ validConf      : obj      验证规则,有required与reg,必填项和正则匹配项
+  @ touch          : boolean  是否使用触摸事件
+  @ loadingTxt     : string   提交时提交按钮显示的文本
+  @ validSuccess   : function[json]
+                     表单验证通过后执行的回调函数,一般在这里调用ajax,
+                     函数的参数为表单序列化后的json格式,
+                     函数中的this指向input[submit]提交按钮
+  @ alertFn        : function[str]
+                     弹窗提示函数,默认使用window的alert弹窗,也可以传入自己的弹窗函数
 ***/
 
 //表单验证
@@ -160,21 +160,21 @@
 })(Zepto);
 
 /***获取验证码并倒计时,
-	方法扩展到获取验证码的点击按钮上
-	@ bind 		 	   : 	#id 		需要绑定验证的input框,只有当input框验证通过时,获取验证码的按钮才可以被点击
-	@ validReg		 :  RegExp  需要验证的input值的正则表达式
-	@ countTime 	 :  number  验证码倒计时秒数
-	@ debounce		 :  number  输入input验证的延迟响应值
-	@ countTag  	 :  string  本地存储所存下计时时间戳的标签
-	@ needRefresh  :  boolean 页面刷新时是否需要刷新计时器,默认是不刷新计时器
-	@ defaultTxt   :  string  获取验证码按钮的状态值
-	@ touch				 :  boolean 是否使用触摸事件
-	@ insertStr    :  str 		验证码倒计时的前置字符串
-	@ appendStr    :  str     验证码倒计时的后置字符串
-	@ sendCode		 :  function[value]
-										点击发送验证码的发送回调函数
-										value: bind的input所对应的值,
-										函数中的this指向发送验证码按钮
+  方法扩展到获取验证码的点击按钮上
+  @ bind:#id需要绑定验证的input框,只有当input框验证通过时,获取验证码的按钮才可以被点击
+  @ validReg    : RegExp   需要验证的input值的正则表达式
+  @ countTime   : number   验证码倒计时秒数
+  @ debounce    : number   输入input验证的延迟响应值
+  @ countTag    : string   本地存储所存下计时时间戳的标签
+  @ needRefresh : boolean  页面刷新时是否需要刷新计时器,默认是不刷新计时器
+  @ defaultTxt  : string   获取验证码按钮的状态值
+  @ touch       : boolean  是否使用触摸事件
+  @ insertStr   : str      验证码倒计时的前置字符串
+  @ appendStr   : str      验证码倒计时的后置字符串
+  @ sendCode    : function[value]
+                           点击发送验证码的发送回调函数
+                           value: bind的input所对应的值,
+                           函数中的this指向发送验证码按钮
 ***/
 ;
 (function($) {
