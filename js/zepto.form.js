@@ -4,6 +4,7 @@
 	包括表单验证、发送验证码
 ***/
 
+
 /***
 	验证码倒计时(刷新页面是否同时刷新计时器,计时变量由localStorage来实现)
 	@ validConf    : 	 obj 			验证规则,有required与reg,必填项和正则匹配项
@@ -53,7 +54,7 @@
 		*/
 
 		function initValid() {
-			unlockBtn($smt);
+			$.unlockBtn($smt);
 
 			if (opt.touch) { //如果需要处理移动端300ms延迟,则使用tap代替click提交(需要zepto的tap插件)
 				$smt.on('click', prevent).on('tap', function() {
@@ -68,7 +69,7 @@
 				prevent(e);
 
 				if (validForm($form)) {
-					lockBtn($smt, opt.loadingTxt); //锁住提交按钮
+					$.lockBtn($smt, opt.loadingTxt); //锁住提交按钮
 					submitForm($form);
 				}
 
@@ -198,7 +199,7 @@
 			$code = $(this),
 			countTimer = null;
 
-		lockBtn($code, opt.defaultTxt);
+		$.lockBtn($code, opt.defaultTxt);
 
 		if (!opt.needRefresh) { //如果刷新页面不需要刷新计时器,则页面加载完成后就开始计时
 			countTime();
@@ -207,7 +208,7 @@
 		}
 
 		/*验证输入框的值*/
-		var _validValue = debounce(validValue, opt.debounce);
+		var _validValue = $.debounce(validValue, opt.debounce);
 		validValue();
 		$ipt.on('input', _validValue);
 
@@ -221,7 +222,7 @@
 			if (!isLocked) {
 				// 设置倒计时时间
 				window.localStorage.setItem(opt.countTag, new Date().getTime());
-				lockBtn($code, getStr(opt.countTime));
+				$.lockBtn($code, getStr(opt.countTime));
 				countTime(); //计时
 				opt.sendCode.call($code, $ipt.val()); //发送验证码
 			}
@@ -239,9 +240,9 @@
 
 			if (!isCounted) { //判断是否正在倒计时
 				if (!rst) {
-					lockBtn($code, opt.defaultTxt);
+					$.lockBtn($code, opt.defaultTxt);
 				} else {
-					unlockBtn($code, opt.defaultTxt);
+					$.unlockBtn($code, opt.defaultTxt);
 				}
 			}
 		}
@@ -259,7 +260,7 @@
 				var disTime = opt.countTime - Math.floor((curTime - storeTime) / 1000);
 				if (disTime <= 0) { //计时结束
 					window.localStorage.removeItem(opt.countTag);
-					unlockBtn($code, opt.defaultTxt);
+					$.unlockBtn($code, opt.defaultTxt);
 					validValue();
 				} else {
 					$code.val( getStr(disTime) );
@@ -286,12 +287,12 @@
 @txt : 锁定后标签上显示的文本
 */
 
-function lockBtn(btn, txt) {
+$.lockBtn=function(btn, txt) {
 
 	var $btn = $(btn);
 	$btn.attr('disabled', 'disabled');
 
-	if (isBtn($btn)) { //如果是button
+	if ($.isBtn($btn)) { //如果是button
 		$btn.text(txt);
 	} else { //如果是input
 		$btn.val(txt);
@@ -304,12 +305,12 @@ function lockBtn(btn, txt) {
 @txt : 锁定后标签上显示的文本
 */
 
-function unlockBtn(btn, txt) {
+$.unlockBtn=function(btn, txt) {
 
 	var $btn = $(btn);
 	$btn.removeAttr('disabled');
 
-	if (isBtn($btn)) { //如果是button
+	if ($.isBtn($btn)) { //如果是button
 		$btn.text(txt);
 	} else { //如果是input
 		$btn.val(txt);
@@ -319,14 +320,14 @@ function unlockBtn(btn, txt) {
 
 /*判断是否是button*/
 
-function isBtn(btn) {
+$.isBtn=function(btn) {
 	var nodeName = $(btn)[0].nodeName;
 	return nodeName === 'BUTTON' ? true : false;
 }
 
 // debounce,减少函数的执行次数
 
-function debounce(fn, delay) {
+$.debounce=function(fn, delay) {
 	var timer = null;
 	return function() {
 		clearTimeout(timer);
