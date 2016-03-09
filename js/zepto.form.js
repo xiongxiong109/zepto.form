@@ -120,7 +120,7 @@
 
 			for (var i = 0; i < arr.length; i++) {
 
-				var key = validConfig[arr[i].name];
+				var key = opt.validConf[arr[i].name];
 				var v = arr[i].value;
 
 				if (key) {
