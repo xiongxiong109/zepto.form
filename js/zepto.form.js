@@ -10,6 +10,7 @@
   @ validConf      : obj      验证规则,有required与reg,必填项和正则匹配项
   @ touch          : boolean  是否使用触摸事件
   @ loadingTxt     : string   提交时提交按钮显示的文本
+  @ defaultTxt     : string   提交的默认显示文本
   @ validSuccess   : function[json]
                      表单验证通过后执行的回调函数,一般在这里调用ajax,
                      函数的参数为表单序列化后的json格式,
@@ -29,6 +30,7 @@
 			"touch": true,
 			/*提交是否要处理300ms的点击延迟*/
 			"loadingTxt": "正在提交",
+			"defaultTxt": "提交",
 			"validSuccess": function(json) {},
 			/*提交后的提交按钮显示*/
 			"alertFn": window.alert /*弹窗函数,默认使用原生alert弹窗,如果有自己编写的弹窗,则在这里传入弹窗函数即可,弹窗函数需要接受字符串参数*/
@@ -54,7 +56,7 @@
 		*/
 
 		function initValid() {
-			$.unlockBtn($smt);
+			$.unlockBtn($smt, opt.defaultTxt);
 
 			if (opt.touch) { //如果需要处理移动端300ms延迟,则使用tap代替click提交(需要zepto的tap插件)
 				$smt.on('click', prevent).on('tap', function() {
