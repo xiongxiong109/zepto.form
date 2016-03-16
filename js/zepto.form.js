@@ -29,6 +29,7 @@
 			"touch": true,
 			/*提交是否要处理300ms的点击延迟*/
 			"loadingTxt": "正在提交",
+			"defaultTxt": "提交",
 			"validSuccess": function(json) {},
 			/*提交后的提交按钮显示*/
 			"alertFn": window.alert /*弹窗函数,默认使用原生alert弹窗,如果有自己编写的弹窗,则在这里传入弹窗函数即可,弹窗函数需要接受字符串参数*/
@@ -54,7 +55,7 @@
 		*/
 
 		function initValid() {
-			$.unlockBtn($smt);
+			$.unlockBtn($smt, opt.defaultTxt);
 
 			if (opt.touch) { //如果需要处理移动端300ms延迟,则使用tap代替click提交(需要zepto的tap插件)
 				$smt.on('click', prevent).on('tap', function() {
@@ -91,7 +92,6 @@
 
 
 		/*表单验证函数
-
 		@:验证的逻辑是根据input的name与validConf的key相对应的值的验证,
 			默认所有需要验证的字段都不能为空,即required
 			required验证会弹出对应的提示字符串,
@@ -101,7 +101,6 @@
 				exp:对应正则表达式,
 				msg:对应匹配错误提示
 			}
-
 		@:表单验证配置示例:
 			validConf={
 				'mobile':{ //对应input的[name]属性
@@ -112,7 +111,6 @@
 					}
 				}
 			}
-
 		*/
 
 		function validForm($form) {
