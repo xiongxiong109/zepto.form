@@ -95,7 +95,7 @@
 		/*表单验证函数
 
 		@:验证的逻辑是根据input的name与validConf的key相对应的值的验证,
-			默认所有需要验证的字段都不能为空,即required
+			默认所有需要验证的字段都不能为空,即required, 如果该项不是必填项,需要设置required=false
 			required验证会弹出对应的提示字符串,
 			正则验证则写在对应的reg属性中,reg属性又有两个属性,
 			目前只做了一个正则的验证,后期可以考虑做多个正则的验证
@@ -127,8 +127,10 @@
 
 				if (key) {
 					if (v == '') { //判断是否为空
-						opt.alertFn.call(null, key.required);
-						return false;
+						if(key.required !== false){ //判断是否为必填项
+							opt.alertFn.call(null, key.required);
+							return false;
+						}
 					} else {
 						if (key['reg']) { //如果有正则需要验证，则验证正则表达式
 							if (!key['reg']['exp'].test(v)) {
