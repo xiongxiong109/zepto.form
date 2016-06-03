@@ -6,7 +6,7 @@
 @txt : 锁定后标签上显示的文本
 */
 
-$.lockBtn=function(btn, txt) {
+$.lockBtn = function(btn, txt) {
 
 	var $btn = $(btn);
 	$btn.attr('disabled', 'disabled');
@@ -24,7 +24,7 @@ $.lockBtn=function(btn, txt) {
 @txt : 锁定后标签上显示的文本
 */
 
-$.unlockBtn=function(btn, txt) {
+$.unlockBtn = function(btn, txt) {
 
 	var $btn = $(btn);
 	$btn.removeAttr('disabled');
@@ -39,14 +39,14 @@ $.unlockBtn=function(btn, txt) {
 
 /*判断是否是button*/
 
-$.isBtn=function(btn) {
+$.isBtn = function(btn) {
 	var nodeName = $(btn)[0].nodeName;
 	return nodeName === 'BUTTON' ? true : false;
 };
 
 // debounce,减少函数的执行次数
 
-$.debounce=function(fn, delay) {
+$.debounce = function(fn, delay) {
 	var timer = null;
 	return function() {
 		clearTimeout(timer);

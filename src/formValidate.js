@@ -119,7 +119,7 @@
 
 				if (key) {
 					if (v === '') { //判断是否为空
-						if(key.required !== false){ //判断是否为必填项
+						if (key.required !== false) { //判断是否为必填项
 							opt.alertFn.call(null, key.required);
 							return false;
 						}

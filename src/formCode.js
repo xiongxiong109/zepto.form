@@ -41,7 +41,7 @@
 
 		if (!opt.needRefresh) { //如果刷新页面不需要刷新计时器,则页面加载完成后就开始计时
 			countTime();
-		}else{
+		} else {
 			window.localStorage.removeItem(opt.countTag);
 		}
 
@@ -101,7 +101,7 @@
 					$.unlockBtn($code, opt.defaultTxt);
 					validValue();
 				} else {
-					$code.val( getStr(disTime) );
+					$code.val(getStr(disTime));
 				}
 			}
 

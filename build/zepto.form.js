@@ -2,7 +2,7 @@
 	@name: zepto.form
 	@author: xiongxiong109
 	@description: 基于zepto的表单插件，包括表单验证、发送验证码、验证码倒计时等
-	@version: 1.1.0
+	@version: 1.2.0
 	@time: 2016-06-03
 ***/
 
@@ -32,7 +32,7 @@
 
 		if (!opt.needRefresh) { //如果刷新页面不需要刷新计时器,则页面加载完成后就开始计时
 			countTime();
-		}else{
+		} else {
 			window.localStorage.removeItem(opt.countTag);
 		}
 
@@ -92,7 +92,7 @@
 					$.unlockBtn($code, opt.defaultTxt);
 					validValue();
 				} else {
-					$code.val( getStr(disTime) );
+					$code.val(getStr(disTime));
 				}
 			}
 
@@ -115,7 +115,7 @@
 @txt : 锁定后标签上显示的文本
 */
 
-$.lockBtn=function(btn, txt) {
+$.lockBtn = function(btn, txt) {
 
 	var $btn = $(btn);
 	$btn.attr('disabled', 'disabled');
@@ -133,7 +133,7 @@ $.lockBtn=function(btn, txt) {
 @txt : 锁定后标签上显示的文本
 */
 
-$.unlockBtn=function(btn, txt) {
+$.unlockBtn = function(btn, txt) {
 
 	var $btn = $(btn);
 	$btn.removeAttr('disabled');
@@ -148,14 +148,14 @@ $.unlockBtn=function(btn, txt) {
 
 /*判断是否是button*/
 
-$.isBtn=function(btn) {
+$.isBtn = function(btn) {
 	var nodeName = $(btn)[0].nodeName;
 	return nodeName === 'BUTTON' ? true : false;
 };
 
 // debounce,减少函数的执行次数
 
-$.debounce=function(fn, delay) {
+$.debounce = function(fn, delay) {
 	var timer = null;
 	return function() {
 		clearTimeout(timer);
@@ -269,7 +269,7 @@ $.debounce=function(fn, delay) {
 
 				if (key) {
 					if (v === '') { //判断是否为空
-						if(key.required !== false){ //判断是否为必填项
+						if (key.required !== false) { //判断是否为必填项
 							opt.alertFn.call(null, key.required);
 							return false;
 						}

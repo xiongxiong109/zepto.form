@@ -1,6 +1,6 @@
 {
   "name": "zepto.form",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "基于zepto的表单插件，包括表单验证、发送验证码、验证码倒计时等",
   "main": "Gruntfile.js",
   "dependencies": {
