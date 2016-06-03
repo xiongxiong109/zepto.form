@@ -7,9 +7,10 @@
 </head>
 <body>
 	<form action="/" name="form" id="form">
-		<input type="text" name="username">
-		<input type="tel" name="mobile">
-		<button type="submit">提交</button>
+		<input type="text" name="username" placeholder="姓名">
+		<input type="tel" name="mobile" placeholder="手机号">
+		<!-- <button type="submit">提交</button> -->
+		<input type="submit" value="提交">
 	</form>
 	<script type="text/javascript" src="../build/zepto.js"></script>
 	<script type="text/javascript" src="../build/zepto.form.min.js"></script>
@@ -35,7 +36,7 @@
 		$("#form").validate({
 			validConf: validConfig,
 			touch: false,
-			loadingTxt: '正在提交...',
+			// loadingTxt: '正在提交...',
 			defaultTxt: '登录',
 			alertFn: alert, // 弹窗提示函数
 			validSuccess: function(json) {
