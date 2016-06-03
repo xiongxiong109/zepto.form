@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+	<title>Document</title>
+</head>
+<body>
+	<form action="/" name="form" id="form">
+		<input type="text" name="username">
+		<input type="tel" name="mobile">
+		<button type="submit">提交</button>
+	</form>
+	<script type="text/javascript" src="../build/zepto.js"></script>
+	<script type="text/javascript" src="../build/zepto.form.min.js"></script>
+	<script type="text/javascript">
+
+		var validConfig = {
+			username: {
+				required: false,
+				reg: {
+					exp: /^[\w\u4e00-\u9fa5]+$/,
+					msg: '姓名不能包含特殊字符'
+				}
+			},
+			mobile: {
+				required: '手机号码不能为空',
+				reg: {
+					exp: /^(0|86|17951)?(13[0-9]|15[012356789]|17[0-9]|18[0-9]|14[57])[0-9]{8}$/,
+					msg: '请输入正确的手机号码'
+				}
+			}
+		} 
+
+		$("#form").validate({
+			validConf: validConfig,
+			touch: false,
+			loadingTxt: '正在提交...',
+			defaultTxt: '登录',
+			alertFn: alert, // 弹窗提示函数
+			validSuccess: function(json) {
+				console.log(this);
+				console.log(json);
+			}
+		});
+
+	</script>
+</body>
+</html>

@@ -42,8 +42,8 @@
 				</div>
 				<input type="submit" name="smt" id="smt" value="提交" class="btn-block" disabled>
 			</form>
-	<script type="text/javascript" src="js/zepto.js"></script>
-	<script type="text/javascript" src="js/zepto.form.min.js"></script>
+	<script type="text/javascript" src="../build/zepto.js"></script>
+	<script type="text/javascript" src="../build/zepto.form.min.js"></script>
 	<script type="text/javascript">
 		var validConfig={//表单验证配置项
 			'name':{
@@ -71,6 +71,7 @@
 
 		/*表单验证正则*/
 		$('form[name="userInfo"]').validate({
+			// touch: false,
 			validConf:validConfig,
 			validSuccess:function(json){ 
 
